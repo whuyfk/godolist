@@ -6,6 +6,15 @@ service TaskService{
     rpc TaskUpdate(TaskRequest) returns(TaskCommonResponse);
     rpc TaskShow(TaskRequest) returns(TasksDetailResponse);
     rpc TaskDelete(TaskRequest) returns(TaskCommonResponse);
+    rpc SayHello(HelloRequest) returns(HelloResponse);
+}
+
+message HelloRequest{
+
+}
+
+message HelloResponse{
+    string msg = 1;
 }
 
 message TaskModel{
@@ -24,6 +33,8 @@ message TaskRequest{
     int64 UserId = 2;
 
     string Title = 3;
+
+    int64 Status = 4;
 }
 
 message TasksDetailResponse{
