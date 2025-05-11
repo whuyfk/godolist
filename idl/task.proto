@@ -1,0 +1,38 @@
+syntax = "proto3";
+option go_package = "task/";
+
+service TaskService{
+    rpc TaskCreate(TaskRequest) returns(TaskCommonResponse);
+    rpc TaskUpdate(TaskRequest) returns(TaskCommonResponse);
+    rpc TaskShow(TaskRequest) returns(TasksDetailResponse);
+    rpc TaskDelete(TaskRequest) returns(TaskCommonResponse);
+}
+
+message TaskModel{
+    int64 TaskId = 1;
+
+    int64 UserId = 2;
+
+    string Title = 3;
+
+    int64 Status = 4;
+}
+
+message TaskRequest{
+    int64 TaskId = 1;
+
+    int64 UserId = 2;
+
+    string Title = 3;
+}
+
+message TasksDetailResponse{
+    repeated TaskModel TaskDetail = 1;
+    int64 code =2;
+}
+
+message TaskCommonResponse{
+    int64 Code = 1;
+    string Msg = 2;
+    string Data = 3;
+}
